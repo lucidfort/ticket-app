@@ -5,10 +5,7 @@ interface Tickets {
 }
 const getTickets = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/tickets", {
-      cache: "no-store",
-    });
-
+    const res = await fetch("http://localhost:3000/api/tickets");
     return res.json();
   } catch (error) {
     console.log("Failed to get tickets", error);

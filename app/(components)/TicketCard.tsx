@@ -8,8 +8,8 @@ interface Props {
   ticket: TicketData;
 }
 const TicketCard = ({ ticket }: Props) => {
-  const formatTimestamp = (timestamp: typeof ticket.createdAt) => {
-    const options = {
+  const formatTimestamp = (timestamp: string) => {
+    const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
@@ -18,7 +18,7 @@ const TicketCard = ({ ticket }: Props) => {
       hour12: true,
     };
 
-    const date = new Date(timestamp as string);
+    const date = new Date(timestamp);
     const formattedDate = date.toLocaleString("en-US", options);
 
     return formattedDate;
@@ -42,7 +42,9 @@ const TicketCard = ({ ticket }: Props) => {
 
         <div className="flex mt-2">
           <div className="flex flex-col">
-            <p className="text-xs my-1">{formatTimestamp(ticket.createdAt)}</p>
+            <p className="text-xs my-1">
+              {formatTimestamp(ticket.createdAt as string)}
+            </p>
             <ProgressDisplay progress={ticket.progress} />
           </div>
 

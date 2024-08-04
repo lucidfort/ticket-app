@@ -2,9 +2,7 @@ import { updateState } from "@/app/(components)/initState";
 import { TicketForm } from "@/app/(components)/TicketForm";
 
 const getTicketById = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`http://localhost:3000/api/tickets/${id}`);
 
   if (!res.ok) {
     throw new Error("Failed to get ticket");
